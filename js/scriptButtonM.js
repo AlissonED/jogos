@@ -59,6 +59,7 @@ const quizData = [
   const feedbackElement = document.getElementById("feedback");
 
   let currentQuestionIndex = 0;
+  let acertos = 0;
 
   function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
@@ -74,11 +75,13 @@ const quizData = [
     const userAnswer = currentQuestion.options[selectedOption];
     if (userAnswer === currentQuestion.answer) {
       feedbackElement.textContent = "Resposta correta!";
+      acertos++;
     } else {
       feedbackElement.textContent = "Resposta incorreta.";
     }
     // Incrementa para a próxima pergunta
     currentQuestionIndex++;
+    document.getElementById("score").textContent = `Acertos: ${acertos}`;
     // Aguarda 1 segundo antes de carregar a próxima pergunta
     setTimeout(loadNextQuestion, 1000);
   }

@@ -41,6 +41,12 @@
     animation: voar 20s infinite linear;
 }
 
+#numLoops{
+    margin-left: 50px;
+    margin-top: 30px;
+    font-family: 'Luckiest Guy', cursive;
+}
+
 @keyframes pipe-animation{
     from {
         right: -80px;

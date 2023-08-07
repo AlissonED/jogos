@@ -1,5 +1,10 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe')
+pipe.addEventListener('animationiteration', contarLoop);
+
+let numLoops = 0;
+let loopCount = 0;
+
 
 const jump = () => {
     mario.classList.add('jump');
@@ -40,4 +45,27 @@ const loop = setInterval (() =>{
 
 }, 10);
 
+function contarLoop()/**função para contart os loops de animação do pipe */ {
+    numLoops++; // Incrementa o número de loops da animação
+    document.getElementById('numLoops').textContent = `Pontos: ${numLoops}`; /**exibe a quantidade de loops */
+  }
+
 document.addEventListener('keydown', jump);
+
+function changeAnimationDuration() {
+    const currentDuration = parseFloat(getComputedStyle(pipe).animationDuration);
+
+    if (loopCount % 6 === 0) /**checa se o numero de loops é um mutiplo de seis */ {
+
+      /**Nova duração da animação: reduza pela metade */ 
+      const newDuration = currentDuration - 0.2;
+      pipe.style.animationDuration = newDuration + 's';
+
+    }
+
+    loopCount++;
+  }
+
+  // Adicionar um ouvinte de evento para o evento "animationiteration"
+  const element = document.querySelector('.pipe');
+  element.addEventListener('animationiteration', changeAnimationDuration);
