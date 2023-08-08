@@ -60,6 +60,9 @@ const quizData = [
 
   let currentQuestionIndex = 0;
   let acertos = 0;
+  var paragrafo = document.getElementById("final");
+  var paragrafo2 = document.getElementById("score");
+  var btn = document.getElementById("botao");
 
   function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
@@ -93,6 +96,9 @@ const quizData = [
       loadQuestion();
     } else {
       questionElement.textContent = "Parabéns, você completou o quiz!";
+      paragrafo.textContent = "Você acertou "+acertos+" de 10 perguntas";
+      btn.style.display = "block";
+      paragrafo2.style.display = "none";
       option1Element.style.display = "none";
       option2Element.style.display = "none";
       option3Element.style.display = "none";

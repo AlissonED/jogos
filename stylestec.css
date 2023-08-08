@@ -68,3 +68,8 @@ button#proximo:hover {
   color: bisque;
   padding-bottom: 10%;
 }
+#final{
+  font-size: 50px;
+  padding-bottom: 30px;
+      color: #f0f0f0;
+}

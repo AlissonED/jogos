@@ -21,8 +21,18 @@ const perguntas = [
   ["O que é um bot?", "Programa automatizado"],
   ];
   
-
+    
+  
   let perguntasSelecionadas = [];
+  var bt1 = document.getElementById("bt1");
+  var bt2 = document.getElementById("bt2");
+  var perg = document.getElementById("perg");
+  var paragrafo = document.getElementById("final");
+  var chec = document.getElementById("chec");
+  var resp = document.getElementById("resposta");
+  var btn = document.getElementById("jorge");
+
+
 
   // Função para selecionar 10 perguntas aleatórias
   function selecionarPerguntasAleatorias(lista, quantidade) {
@@ -50,9 +60,17 @@ const perguntas = [
 
   function pegarEExibirItem() {
     if (perguntasSelecionadas.length === 0) {
-      alert("Você respondeu todas as perguntas!");
-      return;
-    }
+
+      bt1.style.display = "none";
+      bt2.style.display = "none";
+      perg.style.display = "none";
+      chec.style.display = "none";
+      resp.style.display = "none";
+
+      btn.style.display = "block";
+
+      paragrafo.textContent = "Parabens você terminou o quiz";
+          }
   
     // Pegar o primeiro item da lista usando o método splice()
     const itemPegado = perguntasSelecionadas[0];
