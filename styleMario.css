@@ -23,16 +23,18 @@
 }
 
 .mario{
-    width: 70px;
+    width: 150px;
     position: absolute;
     bottom: 0;
-    height: 130px;
-    margin-left: 40px;
 
 }
 
 .jump{
     animation: jump 500ms ease-out; 
+}
+
+.andar{
+    animation: andar 6000ms ease; 
 }
 
 .clouds{
@@ -88,5 +90,13 @@
     }
     to {
         right: 100%
+    }
+}
+@keyframes andar{
+    from{
+        right: 1000px;
+    }
+    to{
+        right: -50px;
     }
 }

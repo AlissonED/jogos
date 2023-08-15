@@ -1,9 +1,10 @@
 const mario = document.querySelector('.mario');
-const pipe = document.querySelector('.pipe')
+const pipe = document.querySelector('.pipe');
+const castle = document.querySelector('.castelo');
 pipe.addEventListener('animationiteration', contarLoop);
 
 let numLoops = 0;
-let loopCount = 0;
+let loopCount = 47;
 
 
 const jump = () => {
@@ -35,7 +36,8 @@ const loop = setInterval (() =>{
 
 
         mario.src = './img/game-over.png';
-        mario.style.widht = '75px'
+        mario.style.width = '75px'
+        mario.style.marginLeft = '50px'
 
 
         clearInterval(loop);/** Parar de rodar o loop */        
@@ -45,6 +47,8 @@ const loop = setInterval (() =>{
 
 }, 10);
 
+
+
 function contarLoop()/**função para contart os loops de animação do pipe */ {
     numLoops++; // Incrementa o número de loops da animação
     document.getElementById('numLoops').textContent = `Pontos: ${numLoops}`; /**exibe a quantidade de loops */
@@ -52,19 +56,33 @@ function contarLoop()/**função para contart os loops de animação do pipe */ 
 
 document.addEventListener('keydown', jump);
 
+
+
 function changeAnimationDuration() {
-    const currentDuration = parseFloat(getComputedStyle(pipe).animationDuration);
+  const currentDuration = parseFloat(getComputedStyle(pipe).animationDuration);
 
-    if (loopCount % 6 === 0) /**checa se o numero de loops é um mutiplo de seis */ {
+  if (loopCount === 49)  {
+    
+    /**Nova duração da animação: reduza pela metade */
+    pipe.style.display = "none";
+    /** Parar o cano */
 
-      /**Nova duração da animação: reduza pela metade */ 
-      const newDuration = currentDuration - 0.2;
-      pipe.style.animationDuration = newDuration + 's';
+    castle.style.display = "block";
 
-    }
+    mario.classList.add('andar');
+    setTimeout(() => {
+      mario.style.display = "none";
+    }, 6000);
 
-    loopCount++;
+    
+    clearInterval(loop);/** Parar de rodar o loop */        
+
+
+
   }
+
+  loopCount++;
+}
 
   // Adicionar um ouvinte de evento para o evento "animationiteration"
   const element = document.querySelector('.pipe');
